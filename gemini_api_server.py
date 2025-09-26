@@ -67,7 +67,7 @@ async def recognize_documents(request: RecognizeDocsRequest):
             """
         
         # 3. Отправляем запрос в Gemini
-        model = genai.GenerativeModel('gemini-2.5-flash-lie')
+        model = genai.GenerativeModel('gemini-2.5-flash-lite')
         response = model.generate_content([prompt] + images_for_gemini, request_options={"timeout": 120})
         response.resolve()
 
