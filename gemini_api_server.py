@@ -61,7 +61,7 @@ def recognize_documents_with_gemini(images: list, country: str) -> dict | None:
             HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
             HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
         }
-        model = genai.GenerativeModel('gemini-2.5-flash', safety_settings=safety_settings)
+        model = genai.GenerativeModel('gemini-2.5-flash-lite', safety_settings=safety_settings)
 
         if country == 'РФ':
             # ТВОЙ ИДЕАЛЬНЫЙ ПРОМПТ ДЛЯ ПАСПОРТА РФ
@@ -95,7 +95,7 @@ def recognize_documents_with_gemini(images: list, country: str) -> dict | None:
 def parse_custom_deal_with_gemini(description: str) -> dict | None:
     """Распознает комплектующие из описания сделки."""
     try:
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash-lite')
         prompt = f"""
         Проанализируй описание комплекта: "{description}".
         Извлеки название/модель велосипеда, его серийный номер (VIN),
@@ -117,7 +117,7 @@ def parse_custom_deal_with_gemini(description: str) -> dict | None:
 def get_buyout_plans_with_gemini(deal_description: str) -> dict | None:
     """Генерирует планы выкупа по описанию комплекта."""
     try:
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash-lite')
         # ТВОЙ ИДЕАЛЬНЫЙ ПРОМПТ ДЛЯ ПЛАНОВ
         prompt = f"""
         Проанализируй описание комплекта для курьера: "{deal_description}".
